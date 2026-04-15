@@ -1,13 +1,13 @@
 import express from "express";
-import { createServer as createViteServer } from "vite";
 import path from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const app = express();
+
 async function startServer() {
-  const app = express();
   const PORT = 3000;
 
   app.use(express.json());
@@ -16,21 +16,19 @@ async function startServer() {
   app.post("/api/contact", (req, res) => {
     const { name, email, phone, message } = req.body;
     
-    // In a real app, you'd use a service like Resend, SendGrid, or Mailgun here.
-    // For now, we'll log the contact request and return a success response.
     console.log("New Contact Request:", { name, email, phone, message });
     
-    // Simulate a delay
     setTimeout(() => {
       res.json({ 
         success: true, 
-        message: "Your message has been received. Sarah Khan will contact you shortly." 
+        message: "Your message has been received. Dubai LUXE will contact you shortly." 
       });
     }, 1000);
   });
 
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
@@ -44,9 +42,13 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
+  if (process.env.NODE_ENV !== "production") {
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Server running on http://localhost:${PORT}`);
+    });
+  }
 }
 
 startServer();
+
+export default app;

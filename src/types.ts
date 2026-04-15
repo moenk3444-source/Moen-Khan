@@ -51,7 +51,7 @@ export const PROPERTIES: Property[] = [
     beds: 3,
     baths: 4,
     area: '3,200 Sq.Ft',
-    image: 'https://images.unsplash.com/photo-1582653280643-e79c79219b19?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1974&auto=format&fit=crop',
     type: 'Flat',
     status: 'Sold',
     description: 'Contemporary living in the heart of the Marina. This sky villa offers panoramic views of the yacht club and the Arabian Gulf.'
