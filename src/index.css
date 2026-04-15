@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Helvetica Neue", Arial, sans-serif;
+  
+  --color-primary: #2563eb;
+  --color-primary-container: #3b82f6;
+  --color-secondary: #25d366;
+  --color-secondary-container: #bbf7d0;
+  --color-surface: #f3f4f6;
+  --color-surface-container-low: #e5e7eb;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-surface: #111827;
+  --color-on-surface-variant: #6b7280;
+  --color-outline-variant: #e5e7eb;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-body selection:bg-primary/20 selection:text-primary;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-nav {
+    @apply backdrop-blur-md bg-white/80 border-b border-outline-variant;
+  }
+  
+  .bento-card {
+    @apply bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 shadow-sm overflow-hidden relative;
+  }
+
+  .bento-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  .vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap');

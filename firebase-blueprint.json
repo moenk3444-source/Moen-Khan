@@ -1,0 +1,48 @@
+{
+  "entities": {
+    "Property": {
+      "title": "Property",
+      "description": "A real estate property listing",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "price": { "type": "string" },
+        "location": { "type": "string" },
+        "neighborhood": { "type": "string" },
+        "beds": { "type": "number" },
+        "baths": { "type": "number" },
+        "area": { "type": "string" },
+        "image": { "type": "string" },
+        "type": { "type": "string", "enum": ["House", "Flat", "Plot", "Commercial"] },
+        "status": { "type": "string", "enum": ["New", "Hot", "Sold", "Exclusive"] },
+        "description": { "type": "string" }
+      },
+      "required": ["id", "title", "price", "location", "neighborhood", "type", "description"]
+    },
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "A contact form submission",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "interest": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "message", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/properties/{propertyId}": {
+      "schema": "Property",
+      "description": "Collection of property listings"
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": "Inquiry",
+      "description": "Collection of user inquiries"
+    }
+  }
+}
